@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">GoogleMAPDemo</string>
+
+    <string-array name="places">
+        <item>atm</item>
+        <item>bank</item>
+        <item>book_store</item>
+        <item>bus_station</item>
+        <item>cafe</item>
+        <item>clothing_store</item>
+        <item>doctor</item>
+        <item>fire_station</item>
+        <item>hospital</item>
+        <item>school</item>
+        <item>zoo</item>
+        <item>travel_agency</item>
+        <item>restaurant</item>
+        <item>post_office</item>
+        <item>pharmacy</item>
+        <item>movie_theater</item>
+    </string-array>
+</resources>
