@@ -45,17 +45,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        getLocation() // Call function
-
-        location_pin.setOnClickListener {
-            pickLocation() // Pick location
-        }
 
 
 
-    }// onCreate
 
+        }// onCreate
 
+    // Get Location Function [ START ]
     fun getLocation(){
 
         var lManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -77,8 +73,11 @@ class MainActivity : AppCompatActivity() {
                     override fun onProviderDisabled(p0: String?) {
                     }
                 })
-    } // getLocation [ END ]
+    }
+    // Get Location Function [ END ]
 
+
+    // Pick Location Function [ START ]
     var PLACE_PICKER_REQUEST = 1
     fun pickLocation(){
 
@@ -86,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST)
 
     }
+    // Pick Location Function [ END ]
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -108,10 +108,17 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (grantResults[0] != PackageManager.PERMISSION_GRANTED && grantResults[1] != PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(this,"You cannot access..OOPS..!Permission Deny",Toast.LENGTH_LONG).show()
-        }else{
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
             Toast.makeText(this,"Cool..Permission Granted...!",Toast.LENGTH_LONG).show()
+                // Call the function after Permission granted  [ START ]
+                getLocation() // Call function
+                location_pin.setOnClickListener {
+                    pickLocation() // Pick location
+                }
+            // Call the function after Permission granted [ END ]
+
+        }else{
+            Toast.makeText(this,"You cannot access..OOPS..!Permission Deny",Toast.LENGTH_LONG).show()
         }
     }
 // Permission Result [ END ]
