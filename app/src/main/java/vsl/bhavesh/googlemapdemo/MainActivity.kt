@@ -29,16 +29,21 @@ class MainActivity : AppCompatActivity() {
 
 
         // Runtime Permission [ START ]
-        //var status = ContextCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.INTERNET)
+        var status = ContextCompat.checkSelfPermission(this@MainActivity,
+               android.Manifest.permission.ACCESS_COARSE_LOCATION)
 
-        var status = ContextCompat.checkSelfPermission(this@MainActivity,android.Manifest.permission.ACCESS_COARSE_LOCATION)
-        var status1 = ContextCompat.checkSelfPermission(this@MainActivity,android.Manifest.permission.ACCESS_FINE_LOCATION)
+        var status1 = ContextCompat.checkSelfPermission(this@MainActivity,
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
 
-        // Permission not granted
-        if (status==PackageManager.PERMISSION_DENIED ||  status1==PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,android.Manifest.permission.ACCESS_FINE_LOCATION),0)
+        // Permission not granted..so make Request to user for permission
+        if (status==PackageManager.PERMISSION_DENIED && status1==PackageManager.PERMISSION_DENIED){
+            ActivityCompat.requestPermissions(this@MainActivity,
+                    arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                            android.Manifest.permission.ACCESS_FINE_LOCATION),0)
         }
         // Runtime Permission [ END ]
+
+
 
         getLocation() // Call function
 
@@ -51,9 +56,6 @@ class MainActivity : AppCompatActivity() {
     }// onCreate
 
 
-
-   @SuppressLint("MissingPermission")
-// @SuppressLint("MissingPermission")
     fun getLocation(){
 
         var lManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -102,15 +104,16 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
+// Permission Result [ START ]
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (grantResults[0] == PackageManager.PERMISSION_DENIED || grantResults[1] == PackageManager.PERMISSION_DENIED){
+        if (grantResults[0] != PackageManager.PERMISSION_GRANTED && grantResults[1] != PackageManager.PERMISSION_GRANTED){
             Toast.makeText(this,"You cannot access..OOPS..!Permission Deny",Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(this,"Cool..Permission Granted...!",Toast.LENGTH_LONG).show()
         }
-
     }
-
+// Permission Result [ END ]
 
 }// MainActivity
