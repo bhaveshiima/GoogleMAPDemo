@@ -37,15 +37,6 @@
 
         </LinearLayout>
 
-       <Button
-           android:layout_width="0dp"
-           android:layout_height="match_parent"
-           android:layout_weight="0.15"
-           android:layout_margin="5dp"
-           android:background="@drawable/ic_add_location_black_24dp"
-           android:id="@+id/all_location"/>
-
-
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -54,6 +45,13 @@
             android:background="@drawable/ic_location_on_black_24dp"
             android:id="@+id/location_pin" />
 
+        <Button
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="0.15"
+           android:layout_margin="5dp"
+           android:background="@drawable/ic_add_location_black_24dp"
+           android:id="@+id/all_location"/>
 
 
     </LinearLayout>

@@ -4,7 +4,7 @@
     <string-array name="places">
         <item>atm</item>
         <item>bank</item>
-        <item>book_store</item>
+        <item>library</item>
         <item>bus_station</item>
         <item>cafe</item>
         <item>clothing_store</item>
