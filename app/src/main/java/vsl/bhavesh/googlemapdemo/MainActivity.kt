@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
 
         }// onCreate
 
-    // Get Location Function [ START ]
+    @SuppressLint("MissingPermission")
+// Get Location Function [ START ]
     fun getLocation(){
 
         var lManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
